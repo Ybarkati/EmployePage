@@ -2,6 +2,8 @@ import "./index.css";
 import { useState } from "react";
 import HomePage from "./pages/HomePage";
 import { data } from "./data";
+import { Routes,Route } from "react-router-dom";
+import EmployeePage from "./pages/EmployeePage";
 
 export default function App() {
 
@@ -15,7 +17,10 @@ export default function App() {
 
   return (
     <div className="App">
-      <HomePage employees={employees} addEmployee={addEmployee} handleDelete={handleDelete} />
+      <Routes>
+        <Route path="/" element={<HomePage employees={employees} addEmployee={addEmployee} handleDelete={handleDelete} />}/>
+        <Route path="/employeePage/:symbol" element={<EmployeePage Employees={employees}/>}/>
+      </Routes>
     </div>
   );
 }

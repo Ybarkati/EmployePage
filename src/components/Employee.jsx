@@ -1,6 +1,17 @@
+import { useNavigate } from "react-router-dom";
+
 function Employee({ employee, handleDelete}) {
+  const navigate=useNavigate()
+  function handleClick(e){
+    if (e.target.className!=="delete"){
+      navigate(`/employeePage/${employee.name}`)
+    }
+      
+  }
     return (
+      
       <div
+        onClick={(e)=>handleClick(e)}
         className="emp"
         style={{ border: `1px solid ${employee.borderColor}` }}
       >
@@ -9,6 +20,7 @@ function Employee({ employee, handleDelete}) {
         <p>{employee.title}</p>
         <button className="delete" onClick={() => handleDelete(employee.id)}>X</button> 
       </div>
+      
     );
   }
   
